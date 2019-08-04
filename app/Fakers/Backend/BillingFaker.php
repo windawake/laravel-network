@@ -2,7 +2,7 @@
 
 namespace App\Fakers\Backend;
 
-class OfferFaker {
+class BillingFaker {
     public function getList(){
         $faker = \Faker\Factory::create();
 
