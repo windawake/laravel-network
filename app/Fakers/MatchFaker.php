@@ -4,76 +4,58 @@ namespace App\Fakers;
 
 class MatchFaker {
     public function getFrontendSearch(){
+        $faker = \Faker\Factory::create();
+
         $request = request();
         $field = $request->post('field');
+        $value = $request->post('value');
+        $ret = [];
 
-        if($field)
+        // 模糊查询offer
+        if($field == 'offer'){
+            $ret = [
+                ['offer_id' => 1, 'offer_name' => $faker->name],
+                ['offer_id' => 2, 'offer_name' => $faker->name],
+                ['offer_id' => 3, 'offer_name' => $faker->name],
+                ['offer_id' => 4, 'offer_name' => $faker->name],
+                ['offer_id' => 5, 'offer_name' => $faker->name],
+                ['offer_id' => 6, 'offer_name' => $faker->name],
+            ];
+            $intval = intval($value);
+            if($intval){
+                if($intval > 0 && $intval < 7){
+                    $ret = [
+                        ['offer_id'=>$value, 'offer_name' => $faker->name]
+                    ];
+                }else{
+                    $ret = [];
+                }
+            }
+            
+        }
 
-        $ret = [
-            'offer_category'=>[
-                1 => 'Casino & Crypto',
-                2 => 'Diet',
-                3 => 'Sweepstakes',
-                4 => 'ED/Muscle',
-                5 => 'Skin',
-                6 => 'Other',
-            ],
-            'offer_status'=>[ 
-                1 =>'paid',
-                0 =>'pending',
-            ],
-            'country' => [
-                1 => 'USA',
-                2 => 'china',
-                3 => 'japan',
-                4 => 'france',
-                5 => 'England',
-            ],
-            'time_zone' => [
-                1 => 'UTC +0',
-                2 => 'UTC +1',
-                3 => 'UTC +2',
-                4 => 'UTC +3',
-                5 => 'UTC +4',
-                6 => 'UTC +5',
-                7 => 'UTC +6',
-                8 => 'UTC +7',
-                9 => 'UTC +8',
-                10 => 'UTC +9',
-                11 => 'UTC -5'
-
-            ],
-            'billing_type' => [
-                1 => 'revenue',
-                2 => 'repeat order bonus',
-                3 => 'bonus',
-            ],
-            'billing_status' => [
-                1 =>'paid',
-                0 =>'pending',
-            ],
-            'bonus_type' => [
-                1 => 'Bonus',
-                2 => 'Repeat Order',
-            ],
-            'bonus_status' => [
-                1 =>'paid',
-                0 =>'pending',
-            ],
-            'post_back_type' => [
-                2 =>'iFrame Code',
-                1 =>'Postback URL',
-                0 =>'global_flag',
-            ],
-            'post_back_goal' => [
-                1 =>'Lead',
-                2 =>'Confirmed',
-            ],
-            'global_flag' => [
-                1 => '是',
-                0 => '否',
-            ]
-        ];
+        // 模糊查询bonus
+        if($field == 'bonus'){
+            $ret = [
+                ['bonus_id' => 1, 'bonus_name' => $faker->name],
+                ['bonus_id' => 2, 'bonus_name' => $faker->name],
+                ['bonus_id' => 3, 'bonus_name' => $faker->name],
+                ['bonus_id' => 4, 'bonus_name' => $faker->name],
+                ['bonus_id' => 5, 'bonus_name' => $faker->name],
+                ['bonus_id' => 6, 'bonus_name' => $faker->name],
+            ];
+            $intval = intval($value);
+            if($intval){
+                if($intval > 0 && $intval < 7){
+                    $ret = [
+                        ['bonus_id'=>$value, 'bonus_name' => $faker->name]
+                    ];
+                }else{
+                    $ret = [];
+                }
+            }
+            
+        }
 
         return $ret;
     }

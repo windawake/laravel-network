@@ -17,6 +17,14 @@ class MapFaker {
                 1 =>'paid',
                 0 =>'pending',
             ],
+            'order_status'=>[ 
+                1 =>'paid',
+                0 =>'pending',
+            ],
+            'domain_type' => [
+                1 => 'Global',
+                2 => 'Specific'
+            ],
             'country' => [
                 1 => 'USA',
                 2 => 'china',
@@ -24,7 +32,7 @@ class MapFaker {
                 4 => 'france',
                 5 => 'England',
             ],
-            'time_zone' => [
+            'timezone' => [
                 1 => 'UTC +0',
                 2 => 'UTC +1',
                 3 => 'UTC +2',
@@ -52,22 +60,27 @@ class MapFaker {
                 2 => 'Repeat Order',
             ],
             'bonus_status' => [
-                1 =>'paid',
-                0 =>'pending',
+                1 => 'paid',
+                0 => 'pending',
+                -1 => 'cancelled ',
             ],
-            'post_back_type' => [
+            'postback_type' => [
                 2 =>'iFrame Code',
                 1 =>'Postback URL',
                 0 =>'global_flag',
             ],
-            'post_back_goal' => [
+            'postback_status' => [
+                1 =>'active',
+                0 =>'pending',
+            ],
+            'postback_goal' => [
                 1 =>'Lead',
                 2 =>'Confirmed',
             ],
             'global_flag' => [
                 1 => '是',
                 0 => '否',
-            ]
+            ],
         ];
 
         return $ret;
