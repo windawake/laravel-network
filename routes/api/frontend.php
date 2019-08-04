@@ -185,6 +185,10 @@ Route::group(['prefix' => 'postback'], function(){
     Route::post('/update', function () {
         return apiResponse();
     });
+
+    Route::post('/delete', function () {
+        return apiResponse();
+    });
 });
 
 // payout模块

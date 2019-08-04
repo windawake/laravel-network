@@ -102,6 +102,14 @@ Route::group(['prefix' => 'reports'], function(){
 
         return apiResponse($ret);
     });
+
+    Route::post('/bonus/create', function () {
+        return apiResponse();
+    });
+
+    Route::post('/billing/generate', function () {
+        return apiResponse();
+    });
 });
 
 // Affiliate列表和信息
@@ -165,7 +173,13 @@ Route::group(['prefix' => 'billing'], function(){
     });
 
     // Billing保存
-    Route::post('/save', function () {
+    Route::post('/update', function () {
+
+        return apiResponse();
+    });
+
+    // Billing删除
+    Route::post('/delete', function () {
 
         return apiResponse();
     });
