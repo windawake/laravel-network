@@ -53,7 +53,7 @@ class ReportsFaker {
         for ($i = 0; $i < 20; $i++) {
             $info = [
                 'id' => $faker->randomDigit,
-                'order_time' => $faker->date(),
+                'order_time' => strtotime($faker->date()),
                 'order_no' => $faker->lexify('NO######'),
                 'offer_name' => $faker->name,
                 'offer_page_name' => $faker->name,
@@ -85,7 +85,7 @@ class ReportsFaker {
         $list = [];
         for ($i = 0; $i < 20; $i++) {
             $info = [
-                'create_time' => $faker->date(),
+                'create_time' => strtotime($faker->date()),
                 'bonus_id' => $faker->randomDigit,
                 'bonus_code' => $faker->bankAccountNumber,
                 'type' => $faker->randomElement([1,2,3,4,5,6]),

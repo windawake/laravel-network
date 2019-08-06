@@ -14,7 +14,7 @@ class DomainFaker {
                 'domain_type' => $faker->randomElement([1,2]),
                 'offer_name' => $faker->name,
                 'status' => $faker->randomElement([1,2]),
-                'create_time' => $faker->date(),
+                'create_time' => strtotime($faker->date()),
             ];
 
             $list[] = $info;

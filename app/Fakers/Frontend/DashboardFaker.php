@@ -8,33 +8,20 @@ class DashboardFaker {
         $faker = \Faker\Factory::create();
 
         $ret = [
-            'today' => $faker->randomFloat(2, 1000, 2000),
-            'yesterday' => $faker->randomFloat(2, 1000, 9000),
-            'last_7d' => $faker->randomFloat(2, 9000, 12000),
-            'last_30d' => $faker->randomFloat(2, 30000, 40000),
-            'this_year' => $faker->randomFloat(2, 300000, 400000),
-        ];
-
-        return $ret;
-    }
-
-    public function conversion_rate(){
-        $faker = \Faker\Factory::create();
-
-        $ret = [
-            'rate' => $faker->numerify("##.##%"),
-        ];
-
-        return $ret;
-    }
-
-    public function bonus(){
-        $faker = \Faker\Factory::create();
-
-        $ret = [
-            'this_month' => $faker->randomFloat(2, 30000, 40000),
-            'last_month' => $faker->randomFloat(2, 30000, 40000),
-            'this_year' => $faker->randomFloat(2, 300000, 400000),
+            'revenue' => [
+                'today' => $faker->randomFloat(2, 1000, 2000),
+                'yesterday' => $faker->randomFloat(2, 1000, 9000),
+                'last_7d' => $faker->randomFloat(2, 9000, 12000),
+                'last_30d' => $faker->randomFloat(2, 30000, 40000),
+                'this_year' => $faker->randomFloat(2, 300000, 400000),
+            ],
+            'conversion_rate' => $faker->numerify("##.##%"),
+            'bonus' => [
+                'this_month' => $faker->randomFloat(2, 30000, 40000),
+                'last_month' => $faker->randomFloat(2, 30000, 40000),
+                'this_year' => $faker->randomFloat(2, 300000, 400000),
+            ]
+            
         ];
 
         return $ret;
@@ -74,13 +61,41 @@ class DashboardFaker {
         $faker = \Faker\Factory::create();
 
         $ret = [
-            '07_01' => ['clicks' => $faker->numberBetween(900, 1500), 'conversions' => $faker->numberBetween(400, 800)],
-            '07_02' => ['clicks' => $faker->numberBetween(900, 1500), 'conversions' => $faker->numberBetween(400, 800)],
-            '07_03' => ['clicks' => $faker->numberBetween(900, 1500), 'conversions' => $faker->numberBetween(400, 800)],
-            '07_04' => ['clicks' => $faker->numberBetween(900, 1500), 'conversions' => $faker->numberBetween(400, 800)],
-            '07_05' => ['clicks' => $faker->numberBetween(900, 1500), 'conversions' => $faker->numberBetween(400, 800)],
-            '07_06' => ['clicks' => $faker->numberBetween(900, 1500), 'conversions' => $faker->numberBetween(400, 800)],
-            '07_07' => ['clicks' => $faker->numberBetween(900, 1500), 'conversions' => $faker->numberBetween(400, 800)],
+            [
+                'timestamp' => strtotime('2019-06-01'),
+                'clicks' => $faker->numberBetween(900, 1500),
+                'conversions' => $faker->numberBetween(400, 800)
+            ],
+            [
+                'timestamp' => strtotime('2019-06-02'),
+                'clicks' => $faker->numberBetween(900, 1500),
+                'conversions' => $faker->numberBetween(400, 800)
+            ],
+            [
+                'timestamp' => strtotime('2019-06-03'),
+                'clicks' => $faker->numberBetween(900, 1500),
+                'conversions' => $faker->numberBetween(400, 800)
+            ],
+            [
+                'timestamp' => strtotime('2019-06-04'),
+                'clicks' => $faker->numberBetween(900, 1500),
+                'conversions' => $faker->numberBetween(400, 800)
+            ],
+            [
+                'timestamp' => strtotime('2019-06-05'),
+                'clicks' => $faker->numberBetween(900, 1500),
+                'conversions' => $faker->numberBetween(400, 800)
+            ],
+            [
+                'timestamp' => strtotime('2019-06-06'),
+                'clicks' => $faker->numberBetween(900, 1500),
+                'conversions' => $faker->numberBetween(400, 800)
+            ],
+            [
+                'timestamp' => strtotime('2019-06-07'),
+                'clicks' => $faker->numberBetween(900, 1500),
+                'conversions' => $faker->numberBetween(400, 800)
+            ],
         ];
 
         return $ret;
@@ -89,7 +104,22 @@ class DashboardFaker {
     public function payout(){
         $faker = \Faker\Factory::create();
 
-        $ret = [];
+        $list = [];
+        for ($i = 0; $i < 5; $i++) {
+            $info = [
+                'id' => $faker->randomDigit,
+                'create_time' => strtotime($faker->date()),
+                'period_start_time' => strtotime($faker->date()),
+                'period_end_time' => strtotime($faker->date()),
+                'total_amount' => $faker->randomFloat(2, 600, 2000),
+                'payment_method' => $faker->creditCardType,
+                'status' => $faker->randomElement([1,0]),
+            ];
+
+            $list[] = $info;
+        }
+        
+        $ret = $list;
 
         return $ret;
     }

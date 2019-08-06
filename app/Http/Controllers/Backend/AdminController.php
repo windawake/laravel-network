@@ -1,21 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
+use App\Http\Controllers\Controller;
+use App\Models\Admin;
+use Illuminate\Support\Facades\Hash;
 
-
-class AuthController extends Controller
+class AdminController extends Controller
 {
-    /**
-     * Create a new AuthController instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth:api', ['except' => ['login','password/email','password/reset']]);
-    }
-
-
 
     /**
      * Get a JWT via given credentials.
@@ -26,7 +17,7 @@ class AuthController extends Controller
     {
         $credentials = request(['email', 'password']);
 
-        if ($token = auth()->attempt($credentials)) {
+        if (! $token = auth('backend')->attempt($credentials)) {
             return apiResponse([], 401, 'Unauthorized 登录失败');
         }
 
@@ -40,7 +31,7 @@ class AuthController extends Controller
      */
     public function me()
     {
-        $token = auth()->user();
+        $token = auth('backend')->user();
         return apiResponse(['access_token' => $token], 200, '校验成功');
     }
 
@@ -51,7 +42,7 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        auth()->logout();
+        auth('backend')->logout();
 
         return apiResponse([], 200, 'Successfully logged out');
     }
@@ -63,7 +54,7 @@ class AuthController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(auth()->refresh());
+        return $this->respondWithToken(auth('backend')->refresh());
     }
 
     /**
@@ -94,7 +85,22 @@ class AuthController extends Controller
         return apiResponse([
             'access_token' => 'bearer '.$token,
             // 'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60,
+            'expires_in' => auth('backend')->factory()->getTTL() * 60,
         ]);
+    }
+
+    public function register()
+    {
+        $ret = Admin::create([
+            'user_name' => request()->post('user_name'),
+            'email' => request()->post('email'),
+            'password' => Hash::make(request()->post('password')), //密码后面修改为前端加密
+        ]);
+
+        if($ret){
+            return apiResponse('注册成功');
+        }else{
+            return apiResponse('注册失败', 500);
+        }
     }
 }

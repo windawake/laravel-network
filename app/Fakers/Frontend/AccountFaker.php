@@ -4,7 +4,7 @@ namespace App\Fakers\Frontend;
 
 class AccountFaker {
     public function getSettings(){
-        $faker = Faker\Factory::create();
+        $faker = \Faker\Factory::create();
         $ret = [
             'user_detail' => [
                 'email' => $faker->email,
@@ -21,19 +21,13 @@ class AccountFaker {
                 'status' => $faker->randomElement([-1,1]),
             ],
             'timezone' => 1,
-            'map' => [
-                'affiliate_status' => [
-                    1=>'正常',
-                    -1=>'禁用'
-                ],
-            ],
         ];
 
         return $ret;
     }
 
     public function getBilling(){
-        $faker = Faker\Factory::create();
+        $faker = \Faker\Factory::create();
         $ret = [
             'billing_detail' => [
                 'payment_method' => $faker->name,

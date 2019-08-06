@@ -12,13 +12,13 @@ class CreativeFaker {
                 'id' => $faker->randomDigit,
                 'name' => $faker->name,
                 'offer_code' => $faker->name,
-                'category' => $faker->randomElement([1,2,3,4,5,6]),
+                'category_id' => $faker->randomElement([1,2,3,4,5,6]),
                 'description' => $faker->sentence(),
                 'payout' => $faker->randomFloat(2, 0, 30),
                 'status' => $faker->randomElement([0,1]),
-                'expired_time' => $faker->date(),
-                'create_time' => $faker->date(),
-                'update_time' => $faker->date(),
+                'expired_time' => strtotime($faker->date()),
+                'create_time' => strtotime($faker->date()),
+                'update_time' => strtotime($faker->date()),
                 'creator' => $faker->name,
                 'modifier' => $faker->name,
             ];
@@ -43,11 +43,11 @@ class CreativeFaker {
             'description' => $faker->sentence(),
             'name' => $faker->name,
             'offer_code' => $faker->name,
-            'category' => $faker->randomElement([1,2,3,4,5,6]),
+            'category_id' => $faker->randomElement([1,2,3,4,5,6]),
             'payout' => $faker->randomFloat(2, 0, 30),
             'epc' => $faker->randomFloat(2, 0, 1),
             'status' => $faker->randomElement([0,1]),
-            'expired_time' => $faker->date(),
+            'expired_time' => strtotime($faker->date()),
         ];
 
         return $ret;

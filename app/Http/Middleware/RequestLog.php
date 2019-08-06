@@ -5,7 +5,6 @@ namespace App\Http\Middleware;
 use Closure;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
-use Illuminate\Support\Facades\Log;
 
 class RequestLog
 {
@@ -25,13 +24,14 @@ class RequestLog
         $log_file = 'logs/'.trim($path, '/').'/'.date("Y-m-d").'.log';
         
         // create a log channel
-        $log = new Logger('name');
+        $log = new Logger('tracking');
         $log->pushHandler(new StreamHandler(storage_path($log_file), Logger::INFO));
 
         // add records to the log
         $log->info(json_encode([
             'path'     => $path,
             'method'   => $request->method(),
+            'header'   => $request->header(),
             'request'  => $request->all(),
             'response' => $response->original,
         ], JSON_UNESCAPED_UNICODE));

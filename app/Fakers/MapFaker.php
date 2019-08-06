@@ -5,7 +5,7 @@ namespace App\Fakers;
 class MapFaker {
     public function getFrontendMap(){
         $ret = [
-            'offer_category'=>[
+            'offer_category_id'=>[
                 1 => 'Casino & Crypto',
                 2 => 'Diet',
                 3 => 'Sweepstakes',
@@ -89,7 +89,7 @@ class MapFaker {
 
     public function getBackendMap(){
         $ret = [
-            'offer_category'=>[
+            'offer_category_id'=>[
                 1 => 'Casino & Crypto',
                 2 => 'Diet',
                 3 => 'Sweepstakes',

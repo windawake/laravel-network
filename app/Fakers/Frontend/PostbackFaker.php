@@ -15,7 +15,7 @@ class PostbackFaker {
                 'offer_id' => $faker->randomDigit,
                 'offer_name' => $faker->name,
                 'postback_status' => $faker->randomElement([1,0]),
-                'create_time' => $faker->date(),
+                'create_time' => strtotime($faker->date()),
             ];
 
             $list[] = $info;
