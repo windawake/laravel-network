@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
+use App\Models\Affiliate;
+
 class UserController extends Controller
 {
 
@@ -17,7 +19,7 @@ class UserController extends Controller
         $credentials = request(['email', 'password']);
 
         if (! $token = auth()->attempt($credentials)) {
-            return apiResponse([], 401, 'Unauthorized 登录失败');
+            return apiResponse([], 500, 'Unauthorized 登录失败');
         }
 
         return $this->respondWithToken($token);
@@ -91,10 +93,18 @@ class UserController extends Controller
 
     public function register()
     {
-        $ret = App\User::create([
-            'user_name' => request()->post('user_name'),
-            'email' => request()->post('email'),
-            'password' => Hash::make(request()->post('password')), //密码后面修改为前端加密
+        $email = request()->input('user_detail.email');
+        $password = request()->input('user_detail.password');
+        $name = request()->input('user_detail.first_name');
+        $ret = Affiliate::where(['email' => $email])->first();
+
+        if($ret){
+            return apiResponse('已经注册了');
+        }
+        $ret = Affiliate::create([
+            'email' => $email,
+            'password' => Hash::make($password), //密码后面修改为前端加密
+            'name' => $name
         ]);
 
         if($ret){

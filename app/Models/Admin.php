@@ -10,7 +10,7 @@ class Admin extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
-    protected $table = 't_admin';
+    protected $table = 'admin';
     public const CREATED_AT = 'create_time';
     public const UPDATED_AT = 'update_time';
     protected $dateFormat = 'U';

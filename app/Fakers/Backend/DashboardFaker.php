@@ -23,13 +23,34 @@ class DashboardFaker {
         $faker = \Faker\Factory::create();
 
         $ret = [
-            '07_01' => ['total_revenue' => $faker->numberBetween(400, 900)],
-            '07_02' => ['total_revenue' => $faker->numberBetween(400, 900)],
-            '07_03' => ['total_revenue' => $faker->numberBetween(400, 900)],
-            '07_04' => ['total_revenue' => $faker->numberBetween(400, 900)],
-            '07_05' => ['total_revenue' => $faker->numberBetween(400, 900)],
-            '07_06' => ['total_revenue' => $faker->numberBetween(400, 900)],
-            '07_07' => ['total_revenue' => $faker->numberBetween(400, 900)],
+            [
+                'timestamp' => strtotime('2019-06-01'),
+                'cost' => $faker->numberBetween(400, 800)
+            ],
+            [
+                'timestamp' => strtotime('2019-06-02'),
+                'cost' => $faker->numberBetween(400, 800)
+            ],
+            [
+                'timestamp' => strtotime('2019-06-03'),
+                'cost' => $faker->numberBetween(400, 800)
+            ],
+            [
+                'timestamp' => strtotime('2019-06-04'),
+                'cost' => $faker->numberBetween(400, 800)
+            ],
+            [
+                'timestamp' => strtotime('2019-06-05'),
+                'cost' => $faker->numberBetween(400, 800)
+            ],
+            [
+                'timestamp' => strtotime('2019-06-06'),
+                'cost' => $faker->numberBetween(400, 800)
+            ],
+            [
+                'timestamp' => strtotime('2019-06-07'),
+                'cost' => $faker->numberBetween(400, 800)
+            ],
         ];
 
         return $ret;
@@ -39,13 +60,41 @@ class DashboardFaker {
         $faker = \Faker\Factory::create();
 
         $ret = [
-            '07_01' => ['clicks' => $faker->numberBetween(900, 1500), 'conversions' => $faker->numberBetween(400, 800)],
-            '07_02' => ['clicks' => $faker->numberBetween(900, 1500), 'conversions' => $faker->numberBetween(400, 800)],
-            '07_03' => ['clicks' => $faker->numberBetween(900, 1500), 'conversions' => $faker->numberBetween(400, 800)],
-            '07_04' => ['clicks' => $faker->numberBetween(900, 1500), 'conversions' => $faker->numberBetween(400, 800)],
-            '07_05' => ['clicks' => $faker->numberBetween(900, 1500), 'conversions' => $faker->numberBetween(400, 800)],
-            '07_06' => ['clicks' => $faker->numberBetween(900, 1500), 'conversions' => $faker->numberBetween(400, 800)],
-            '07_07' => ['clicks' => $faker->numberBetween(900, 1500), 'conversions' => $faker->numberBetween(400, 800)],
+            [
+                'timestamp' => strtotime('2019-06-01'),
+                'clicks' => $faker->numberBetween(900, 1500),
+                'conversions' => $faker->numberBetween(400, 800)
+            ],
+            [
+                'timestamp' => strtotime('2019-06-02'),
+                'clicks' => $faker->numberBetween(900, 1500),
+                'conversions' => $faker->numberBetween(400, 800)
+            ],
+            [
+                'timestamp' => strtotime('2019-06-03'),
+                'clicks' => $faker->numberBetween(900, 1500),
+                'conversions' => $faker->numberBetween(400, 800)
+            ],
+            [
+                'timestamp' => strtotime('2019-06-04'),
+                'clicks' => $faker->numberBetween(900, 1500),
+                'conversions' => $faker->numberBetween(400, 800)
+            ],
+            [
+                'timestamp' => strtotime('2019-06-05'),
+                'clicks' => $faker->numberBetween(900, 1500),
+                'conversions' => $faker->numberBetween(400, 800)
+            ],
+            [
+                'timestamp' => strtotime('2019-06-06'),
+                'clicks' => $faker->numberBetween(900, 1500),
+                'conversions' => $faker->numberBetween(400, 800)
+            ],
+            [
+                'timestamp' => strtotime('2019-06-07'),
+                'clicks' => $faker->numberBetween(900, 1500),
+                'conversions' => $faker->numberBetween(400, 800)
+            ],
         ];
 
         return $ret;

@@ -42,11 +42,6 @@ Route::group(['namespace' => 'Frontend', 'middleware' => 'auth:api'], function()
             return apiResponse($ret);
         });
 
-        // offer保存
-        Route::post('update', function () {
-
-            return apiResponse();
-        });
     });
 
     // 账号配置信息
@@ -164,18 +159,24 @@ Route::group(['namespace' => 'Frontend', 'middleware' => 'auth:api'], function()
 
     // postback模块
     Route::group(['prefix' => 'postback'], function(){
-        Route::post('/list', function () {
+        Route::post('list', function () {
             $faker = new App\Fakers\Frontend\PostbackFaker;
             $ret = $faker->getList();
 
             return apiResponse($ret);
         });
 
-        Route::post('/update', function () {
+        // 创建 new postback
+        Route::post('create', function () {
+
             return apiResponse();
         });
 
-        Route::post('/delete', function () {
+        Route::post('save_global', function () {
+            return apiResponse();
+        });
+
+        Route::post('delete', function () {
             return apiResponse();
         });
     });

@@ -1,15 +1,19 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements JWTSubject
+class Affiliate extends Authenticatable implements JWTSubject
 {
     use Notifiable;
+
+    protected $table = 'affiliate';
+    public const CREATED_AT = 'create_time';
+    public const UPDATED_AT = 'update_time';
+    protected $dateFormat = 'U';
 
     // Rest omitted for brevity
 
@@ -39,7 +43,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','api_token',
+        'email', 'password'
     ];
 
     /**
@@ -48,7 +52,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token','api_token'
+        'password'
     ];
 
     /**
@@ -57,6 +61,6 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        // 'email_verified_at' => 'datetime',
     ];
 }

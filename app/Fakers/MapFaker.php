@@ -17,13 +17,24 @@ class MapFaker {
                 1 =>'paid',
                 0 =>'pending',
             ],
+            'creative_type' => [
+                1 => '压缩包',
+                2 => '图片',
+                3 => '视频',
+            ],
             'order_status'=>[ 
                 1 =>'paid',
                 0 =>'pending',
+                -1 => 'cancelled',
+                -2 => 'fraud',
             ],
             'domain_type' => [
                 1 => 'Global',
                 2 => 'Specific'
+            ],
+            'domain_status' => [
+                1 => 'active',
+                0 => 'pending'
             ],
             'country' => [
                 1 => 'USA',
@@ -52,8 +63,8 @@ class MapFaker {
                 3 => 'bonus',
             ],
             'billing_status' => [
-                1 =>'paid',
-                0 =>'pending',
+                1 => 'paid',
+                0 => 'pending',
             ],
             'bonus_type' => [
                 1 => 'Bonus',

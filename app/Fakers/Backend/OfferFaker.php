@@ -39,15 +39,35 @@ class OfferFaker {
         $faker = \Faker\Factory::create();
 
         $ret = [
-            'id' => $faker->randomDigit,
-            'description' => $faker->sentence(),
-            'name' => $faker->name,
-            'offer_code' => $faker->name,
-            'category_id' => $faker->randomElement([1,2,3,4,5,6]),
-            'payout' => $faker->randomFloat(2, 0, 30),
-            'epc' => $faker->randomFloat(2, 0, 1),
-            'status' => $faker->randomElement([0,1]),
-            'expired_time' => strtotime($faker->date()),
+            'basic_info' => [
+                'id' => $faker->randomDigit,
+                'description' => $faker->sentence(),
+                'offer_name' => $faker->name,
+                'offer_code' => $faker->name,
+                'country_id' => $faker->randomNumber(),
+                'category_id' => $faker->numberBetween(1,6),
+                'payout' => $faker->randomFloat(2, 0, 30),
+                'epc' => $faker->randomFloat(2, 0, 1),
+                'status' => $faker->randomElement([0,1]),
+                'expired_time' => strtotime($faker->date()),
+            ],
+            'offer_page' => [
+                [
+                    'offer_id' => $faker->randomDigit,
+                    'offer_name' => $faker->name,
+                    'page_download_url' => $faker->url,
+                ],
+                [
+                    'offer_id' => $faker->randomDigit,
+                    'offer_name' => $faker->name,
+                    'page_download_url' => $faker->url,
+                ],
+                [
+                    'offer_id' => $faker->randomDigit,
+                    'offer_name' => $faker->name,
+                    'page_download_url' => $faker->url,
+                ],
+            ],
         ];
 
         return $ret;

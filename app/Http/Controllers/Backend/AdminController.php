@@ -18,7 +18,7 @@ class AdminController extends Controller
         $credentials = request(['email', 'password']);
 
         if (! $token = auth('backend')->attempt($credentials)) {
-            return apiResponse([], 401, 'Unauthorized 登录失败');
+            return apiResponse([], 500, 'Unauthorized 登录失败');
         }
 
         return $this->respondWithToken($token);
@@ -91,10 +91,19 @@ class AdminController extends Controller
 
     public function register()
     {
+        $email = request()->input('email');
+        $password = request()->input('password');
+        $name =request()->post('user_name');
+        $ret = Admin::where(['email' => $email])->first();
+
+        if($ret){
+            return apiResponse('已经注册了');
+        }
+
         $ret = Admin::create([
-            'user_name' => request()->post('user_name'),
-            'email' => request()->post('email'),
-            'password' => Hash::make(request()->post('password')), //密码后面修改为前端加密
+            'user_name' => $name,
+            'email' => $email,
+            'password' => Hash::make($password), //密码后面修改为前端加密
         ]);
 
         if($ret){
