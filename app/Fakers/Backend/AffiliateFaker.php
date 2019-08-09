@@ -9,9 +9,9 @@ class AffiliateFaker {
         $list = [];
         for ($i = 0; $i < 20; $i++) {
             $info = [
-                'id' => $faker->randomDigit,
+                'id' => $faker->unique()->randomNumber(),
                 'affiliate_name' => $faker->name,
-                'manager_id' => $faker->randomDigit,
+                'manager_id' => $faker->unique()->randomNumber(),
                 'account_manager' => $faker->name,
                 'affiliate_type' => $faker->randomElement([1,2]),
                 'status' => $faker->randomElement([0,1]),
@@ -43,10 +43,63 @@ class AffiliateFaker {
 
     public function getDetail(){
         $faker = \Faker\Factory::create();
+        $domainList = [];
+        $offerList = [];
+
+        for ($i = 0; $i < 6; $i++){
+            $domainList[] = [
+                'domain_id' => $faker->unique()->randomNumber(),
+                'domain_url' => $faker->domainName,
+            ];
+
+            $offerList[] = [
+                'offer_id' => $faker->unique()->randomNumber(),
+                'offer_name' => $faker->name,
+                'default_payout' => $faker->randomFloat(2, 0, 30),
+                'payout' => $faker->randomFloat(2, 0, 30),
+            ];
+        }
 
         $ret = [
-            'id' => $faker->randomDigit,
-            'affiliate_name' => $faker->name,
+            'affiliate_info' => [
+                'affiliate_id' => $faker->unique()->randomNumber(),
+                'affiliate_name' => $faker->name,
+                'address1' => $faker->address,
+                'address2' => $faker->address,
+                'city' => $faker->city,
+                'country_id' => $faker->unique()->randomNumber(),
+                'phone' => $faker->tollFreePhoneNumber,
+            ],
+            'user_info' => [
+                'first_name' => $faker->firstName,
+                'last_name' => $faker->lastName,
+                'email' => $faker->companyEmail,
+                'password' => $faker->name,
+                'confirm_password' => $faker->name,
+                'phone' => $faker->imei,
+                'status' => $faker->numberBetween(0,1),
+                'manager_id' => $faker->unique()->randomNumber(),
+            ],
+            'billing_info' => [
+                'address1' => $faker->address,
+                'address2' => $faker->address,
+                'city' => $faker->city,
+                'country_id' => $faker->unique()->randomNumber(),
+                'region_id' => $faker->unique()->randomNumber(),
+                'zip_code' => $faker->postcode,
+                'payment_method' => $faker->creditCardType,
+                'beneficiary_name' => $faker->bankAccountNumber,
+                'bank_name' => $faker->bankAccountNumber,
+                'swift_number' => $faker->swiftBicNumber,
+                'account_number' => $faker->bankAccountNumber,
+                'billing_frequency' => $faker->unique()->randomNumber(),
+                'other_detail' => $faker->sentence(),
+            ],
+            'offer_settings' => [
+                'domain_list' => $domainList,
+                'offer_list' => $offerList,
+            ],
+            
         ];
 
         return $ret;

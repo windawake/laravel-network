@@ -9,7 +9,7 @@ class ReportsFaker {
         $list = [];
         for ($i = 0; $i < 20; $i++) {
             $info = [
-                'offer_id' => $faker->randomDigit,
+                'offer_id' => $faker->unique()->randomNumber(),
                 'offer_name' => $faker->name,
                 'offer_page_name' => $faker->name,
                 'goal_id' => $faker->randomElement([1,2]),
@@ -52,7 +52,7 @@ class ReportsFaker {
         $list = [];
         for ($i = 0; $i < 20; $i++) {
             $info = [
-                'id' => $faker->randomDigit,
+                'id' => $faker->unique()->randomNumber(),
                 'order_time' => strtotime($faker->date()),
                 'order_no' => $faker->lexify('NO######'),
                 'offer_name' => $faker->name,
@@ -86,10 +86,10 @@ class ReportsFaker {
         for ($i = 0; $i < 20; $i++) {
             $info = [
                 'create_time' => strtotime($faker->date()),
-                'bonus_id' => $faker->randomDigit,
+                'bonus_id' => $faker->unique()->randomNumber(),
                 'bonus_code' => $faker->bankAccountNumber,
                 'type' => $faker->randomElement([1,2,3,4,5,6]),
-                'offer_id' => $faker->randomDigit,
+                'offer_id' => $faker->unique()->randomNumber(),
                 'offer_name' => $faker->randomFloat(2, 0, 30),
                 'country_id' => $faker->numberBetween(0,100),
                 'bonus_status' => $faker->randomElement([1,0]),

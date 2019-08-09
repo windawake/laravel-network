@@ -17,7 +17,7 @@ class AccountFaker {
                 'address2' => $faker->address,
                 'city' => $faker->city,
                 'country_id' => $faker->randomNumber(),
-                'phone' => $faker->phoneNumber,
+                'phone' => $faker->tollFreePhoneNumber,
                 'status' => $faker->randomElement([-1,1]),
             ],
             'timezone' => 1,

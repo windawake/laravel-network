@@ -9,9 +9,8 @@ class OfferFaker {
         $list = [];
         for ($i = 0; $i < 20; $i++) {
             $info = [
-                'id' => $faker->randomDigit,
+                'offer_id' => $faker->unique()->randomNumber(),
                 'offer_name' => $faker->name,
-                'offer_code' => $faker->name,
                 'category_id' => $faker->randomElement([1,2,3,4,5,6]),
                 'description' => $faker->sentence(),
                 'default_payout' => $faker->randomFloat(2, 0, 30),
@@ -28,7 +27,7 @@ class OfferFaker {
         }
         
         $ret = [
-            'pageSize' => 20,
+            'pageSize' => 120,
             'current' => $faker->randomDigit,
             'total' => 100,
             'list' => $list
@@ -42,10 +41,9 @@ class OfferFaker {
 
         $ret = [
             'basic_info' => [
-                'id' => $faker->randomDigit,
+                'offer_id' => $faker->unique()->randomNumber(),
                 'description' => $faker->sentence(),
                 'offer_name' => $faker->name,
-                'offer_code' => $faker->name,
                 'country_id' => $faker->randomNumber(),
                 'category_id' => $faker->randomElement([1,2,3,4,5,6]),
                 'payout' => $faker->randomFloat(2, 0, 30),
@@ -69,45 +67,48 @@ class OfferFaker {
             ],
             'offer_page' => [
                 [
-                    'offer_id' => $faker->randomDigit,
+                    'offer_id' => $faker->unique()->randomNumber(),
                     'offer_name' => $faker->name,
                     'page_download_url' => $faker->url,
+                    'tracking_url' => $faker->url,
                 ],
                 [
-                    'offer_id' => $faker->randomDigit,
+                    'offer_id' => $faker->unique()->randomNumber(),
                     'offer_name' => $faker->name,
                     'page_download_url' => $faker->url,
+                    'tracking_url' => $faker->url,
                 ],
                 [
-                    'offer_id' => $faker->randomDigit,
+                    'offer_id' => $faker->unique()->randomNumber(),
                     'offer_name' => $faker->name,
                     'page_download_url' => $faker->url,
+                    'tracking_url' => $faker->url,
                 ],
             ],
             // 'sub_id' => [
-            //     'sub_id_1' => $faker->randomDigit,
-            //     'sub_id_2' => $faker->randomDigit,
-            //     'sub_id_3' => $faker->randomDigit,
-            //     'sub_id_4' => $faker->randomDigit,
-            //     'sub_id_5' => $faker->randomDigit,
+            //     'sub_id_1' => $faker->unique()->randomNumber(),
+            //     'sub_id_2' => $faker->unique()->randomNumber(),
+            //     'sub_id_3' => $faker->unique()->randomNumber(),
+            //     'sub_id_4' => $faker->unique()->randomNumber(),
+            //     'sub_id_5' => $faker->unique()->randomNumber(),
             // ],
             'postback' => [
                 [
-                    'id' => $faker->randomDigit,
+                    'postback_id' => $faker->unique()->randomNumber(),
                     'goal_id' => $faker->numberBetween(1,2),
                     'postback_type' => $faker->numberBetween(1,2),
                     'url_code' => $faker->url,
                     'create_time' => strtotime($faker->date()),
                 ],
                 [
-                    'id' => $faker->randomDigit,
+                    'postback_id' => $faker->unique()->randomNumber(),
                     'goal_id' => $faker->numberBetween(1,2),
                     'postback_type' => $faker->numberBetween(1,2),
                     'url_code' => $faker->url,
                     'create_time' => strtotime($faker->date()),
                 ],
                 [
-                    'id' => $faker->randomDigit,
+                    'postback_id' => $faker->unique()->randomNumber(),
                     'goal_id' => $faker->numberBetween(1,2),
                     'postback_type' => $faker->numberBetween(1,2),
                     'url_code' => $faker->url,

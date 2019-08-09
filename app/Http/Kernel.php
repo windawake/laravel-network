@@ -40,7 +40,7 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:60,1',
             'bindings',
-            \App\Http\Middleware\RequestLog::class,
+            \App\Http\Middleware\RequestLog::class, //新增加这一行代码
         ],
     ];
 

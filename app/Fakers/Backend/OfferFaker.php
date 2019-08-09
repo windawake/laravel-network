@@ -9,9 +9,8 @@ class OfferFaker {
         $list = [];
         for ($i = 0; $i < 20; $i++) {
             $info = [
-                'id' => $faker->randomDigit,
+                'id' => $faker->unique()->randomNumber(),
                 'name' => $faker->name,
-                'offer_code' => $faker->name,
                 'category_id' => $faker->randomElement([1,2,3,4,5,6]),
                 'description' => $faker->sentence(),
                 'payout' => $faker->randomFloat(2, 0, 30),
@@ -40,10 +39,9 @@ class OfferFaker {
 
         $ret = [
             'basic_info' => [
-                'id' => $faker->randomDigit,
+                'id' => $faker->unique()->randomNumber(),
                 'description' => $faker->sentence(),
                 'offer_name' => $faker->name,
-                'offer_code' => $faker->name,
                 'country_id' => $faker->randomNumber(),
                 'category_id' => $faker->numberBetween(1,6),
                 'payout' => $faker->randomFloat(2, 0, 30),
@@ -53,17 +51,17 @@ class OfferFaker {
             ],
             'offer_page' => [
                 [
-                    'offer_id' => $faker->randomDigit,
+                    'offer_id' => $faker->unique()->randomNumber(),
                     'offer_name' => $faker->name,
                     'page_download_url' => $faker->url,
                 ],
                 [
-                    'offer_id' => $faker->randomDigit,
+                    'offer_id' => $faker->unique()->randomNumber(),
                     'offer_name' => $faker->name,
                     'page_download_url' => $faker->url,
                 ],
                 [
-                    'offer_id' => $faker->randomDigit,
+                    'offer_id' => $faker->unique()->randomNumber(),
                     'offer_name' => $faker->name,
                     'page_download_url' => $faker->url,
                 ],

@@ -9,10 +9,10 @@ class PayoutFaker {
         $list = [];
         for ($i = 0; $i < 20; $i++) {
             $info = [
-                'id' => $faker->randomDigit,
+                'id' => $faker->unique()->randomNumber(),
                 'billing_code' => $faker->bankAccountNumber,
                 'type' => $faker->randomElement([1,2,3]),
-                'offer_id' => $faker->randomDigit,
+                'offer_id' => $faker->unique()->randomNumber(),
                 'offer_name' => $faker->name,
                 'create_time' => strtotime($faker->date()),
                 'period_start_time' => strtotime($faker->date()),
@@ -41,7 +41,7 @@ class PayoutFaker {
         $list = [];
         for ($i = 0; $i < 5; $i++) {
             $info = [
-                'offer_id' => $faker->randomDigit,
+                'offer_id' => $faker->unique()->randomNumber(),
                 'offer_name' => $faker->name,
                 'payout' => $faker->randomFloat(2, 0, 30),
                 'conversions' => $faker->numberBetween(20, 60),

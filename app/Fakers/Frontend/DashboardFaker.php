@@ -33,7 +33,7 @@ class DashboardFaker {
         $list = [];
         for ($i = 0; $i < 5; $i++) {
             $info = [
-                'id' => $faker->randomDigit,
+                'id' => $faker->unique()->randomNumber(),
                 'name' => $faker->name,
                 'payout' => $faker->randomFloat(2, 0, 30),
                 'clicks' => $faker->numberBetween(100, 2000),
@@ -107,7 +107,7 @@ class DashboardFaker {
         $list = [];
         for ($i = 0; $i < 5; $i++) {
             $info = [
-                'id' => $faker->randomDigit,
+                'id' => $faker->unique()->randomNumber(),
                 'create_time' => strtotime($faker->date()),
                 'period_start_time' => strtotime($faker->date()),
                 'period_end_time' => strtotime($faker->date()),

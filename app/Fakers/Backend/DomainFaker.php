@@ -9,8 +9,8 @@ class DomainFaker {
         $list = [];
         for ($i = 0; $i < 20; $i++) {
             $info = [
-                'id' => $faker->randomDigit,
-                'domain_url' => $faker->url,
+                'id' => $faker->unique()->randomNumber(),
+                'domain_url' => $faker->domainName,
                 'domain_type' => $faker->randomElement([1,2]),
                 'offer_name' => $faker->name,
                 'status' => $faker->randomElement([1,2]),

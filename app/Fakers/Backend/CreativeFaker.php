@@ -9,9 +9,8 @@ class CreativeFaker {
         $list = [];
         for ($i = 0; $i < 20; $i++) {
             $info = [
-                'id' => $faker->randomDigit,
+                'id' => $faker->unique()->randomNumber(),
                 'name' => $faker->name,
-                'offer_code' => $faker->name,
                 'category_id' => $faker->randomElement([1,2,3,4,5,6]),
                 'description' => $faker->sentence(),
                 'payout' => $faker->randomFloat(2, 0, 30),
@@ -39,10 +38,9 @@ class CreativeFaker {
         $faker = \Faker\Factory::create();
 
         $ret = [
-            'id' => $faker->randomDigit,
+            'id' => $faker->unique()->randomNumber(),
             'description' => $faker->sentence(),
             'name' => $faker->name,
-            'offer_code' => $faker->name,
             'category_id' => $faker->randomElement([1,2,3,4,5,6]),
             'payout' => $faker->randomFloat(2, 0, 30),
             'epc' => $faker->randomFloat(2, 0, 1),
