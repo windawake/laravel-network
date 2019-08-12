@@ -1,9 +1,8 @@
-### 安装composer
+# laravel-network
+独立开发api接口
 
-线上执行 composer install --no-dev
+# git厉害的命令
 
-本地执行 composer install
-
-### code生成规则
-
-Bonus ID(bonus_code)-自动生成，8位，与在order report里生成的bonus一起合并编号，编号规则：6位年月日+4位数字，如19061100001；
+```
+git pull origin master --allow-unrelated-histories // 用户替换git地址源
+```
